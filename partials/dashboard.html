@@ -1,0 +1,54 @@
+<div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="ace-icon fa fa-home home-icon"></i>
+            <a href="#">Home</a>
+        </li>
+        <li class="active">Dashboard</li>
+    </ul>
+</div>
+<div class="page-content">
+    <div class="row">
+        <div class="space-6"></div>
+        <div class="col-sm-10 col-sm-offset-1">
+            <div id="login-box" class="login-box visible widget-box no-border">
+                <div class="widget-body">
+                    <div class="widget-main">
+                        <h4 class="header blue lighter bigger">
+                            <i class="icon-coffee green"></i>
+                            Events
+                        </h4>
+                        <div class="space-16"></div>
+                        <br/>Welcome back, {{name}}
+                        <br/>
+                        <ul class="list-group" ng:controller="EventsCtrl">
+                        <h3>Past Events</h3>
+                        <li class="list-group-item disabled" ng:repeat="event in pastEvents">
+                            {{ event.name }} - {{ event.date  | date : 'MMM d yyyy' }}
+                            <span ng-if="event.uid">
+                                &nbsp;&mdash;&nbsp;I went!
+                            </span>
+                        </li>
+                        <h3>Future Events</h3>
+                        <li class="list-group-item" ng:repeat="event in futureEvents">
+                            <!--<a href='#/events/{{ event.event_id }}'>{{ event.name }}</a> - {{ event.date  | date : 'MMM d yyyy' }}-->
+                            {{ event.name }} - {{ event.date  | date : 'MMM d yyyy' }}
+                            <span ng-if="event.uid">
+                                &nbsp;&mdash;&nbsp;I'm Going!
+                                <button class="width-25 pull-right btn btn-sm btn-danger" ng-click="cancel(event)">Cancel</button>
+                            </span>
+                            <span ng-if="!event.uid">
+                                <button class="width-25 pull-right btn btn-sm btn-primary" ng-click="register(event)">Attend</button>
+                            </span>
+                        </li>
+                        </ul
+                        <div ng:controller="authCtrl">
+                            <a ng-click="logout();">Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /.page-content -->
