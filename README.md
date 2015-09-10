@@ -2,7 +2,7 @@
 
 ## Download
 
-* http://github.com/etc
+* https://github.com/mmcmann/event-reg-app
 
 ## Requirements
 
